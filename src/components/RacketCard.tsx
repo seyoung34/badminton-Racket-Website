@@ -1,5 +1,5 @@
 
-import { Racket } from "../data/rackets";
+import type { Racket } from "../data/rackets";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -12,20 +12,20 @@ interface RacketCardProps {
 
 export function RacketCard({ racket, onClick }: RacketCardProps) {
   return (
-    <Card 
+    <Card
       className="group overflow-hidden cursor-pointer transition-all hover:shadow-md hover:border-blue-300 border-transparent ring-1 ring-slate-100"
       onClick={() => onClick(racket)}
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
-        <img 
-          src={racket.image} 
+        <img
+          src={racket.image}
           alt={racket.name}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 mix-blend-multiply opacity-90 group-hover:opacity-100"
         />
         <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-           <Button size="icon" variant="secondary" className="h-8 w-8 rounded-full bg-white/90 hover:bg-white text-slate-400 hover:text-red-500 shadow-sm">
-             <Heart className="h-4 w-4" />
-           </Button>
+          <Button size="icon" variant="secondary" className="h-8 w-8 rounded-full bg-white/90 hover:bg-white text-slate-400 hover:text-red-500 shadow-sm">
+            <Heart className="h-4 w-4" />
+          </Button>
         </div>
       </div>
       <CardHeader className="p-4 pb-2 space-y-1">
