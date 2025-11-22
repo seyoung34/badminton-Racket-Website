@@ -57,27 +57,27 @@ export default function App() {
       <Header />
 
       <main className="container mx-auto px-4 py-8">
-        {/* Search Section */}
+        {/* 메인 타이틀과 검색창 */}
         <div className="max-w-2xl mx-auto mb-12 text-center space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
-            Find Your Perfect <span className="text-blue-600">Match</span>
+            이종혁, 너의 라켓을 <span className="text-blue-600">찾아라</span>
           </h1>
-          <p className="text-lg text-slate-600 max-w-lg mx-auto">
-            Compare specs, analyze features, and find the best badminton racket for your playstyle.
-          </p>
 
+          {/* 검색박스 */}
           <div className="relative mt-8 max-w-lg mx-auto">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
             <Input
               className="pl-12 h-14 text-lg bg-white border-slate-200 shadow-lg shadow-slate-200/50 rounded-full focus-visible:ring-blue-500 focus-visible:border-blue-500 transition-shadow hover:shadow-xl"
-              placeholder="Search by name, brand, or style..."
+              placeholder="이름, 스타일 등으로 검색해보세요"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>
 
+        {/* 메인 내용 */}
         <div className="flex flex-col md:flex-row gap-8 items-start">
+
           {/* Sidebar (Desktop) */}
           <aside className="hidden md:block w-64 flex-shrink-0 sticky top-24">
             <FilterSidebar filters={filters} setFilters={setFilters} />
@@ -99,21 +99,22 @@ export default function App() {
             </Sheet>
           </div>
 
-          {/* Results Grid */}
+          {/* 결과 Grid */}
           <div className="flex-1 w-full">
             <div className="mb-6 flex justify-between items-center">
               <p className="text-slate-500 font-medium">
-                Showing <span className="text-slate-900 font-bold">{filteredRackets.length}</span> rackets
+                결과  <span className="text-slate-900 font-bold">{filteredRackets.length}</span> 개
               </p>
+              {/* 정렬 */}
               <Select value={sortOption} onValueChange={setSortOption}>
                 <SelectTrigger className="w-[180px] bg-white border-slate-200">
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="featured">Featured</SelectItem>
-                  <SelectItem value="price-asc">Price: Low to High</SelectItem>
-                  <SelectItem value="price-desc">Price: High to Low</SelectItem>
-                  <SelectItem value="name-asc">Name: A-Z</SelectItem>
+                  <SelectItem value="featured">기본</SelectItem>
+                  <SelectItem value="price-asc">가격 오름차순</SelectItem>
+                  <SelectItem value="price-desc">가격 내림차순</SelectItem>
+                  <SelectItem value="name-asc">이름순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -129,8 +130,8 @@ export default function App() {
                 <div className="mx-auto w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4">
                   <Search className="h-8 w-8 text-slate-300" />
                 </div>
-                <h3 className="text-lg font-medium text-slate-900 mb-2">No rackets found</h3>
-                <p className="text-slate-500 max-w-xs mx-auto mb-6">We couldn't find any rackets matching your specific criteria.</p>
+                <h3 className="text-lg font-medium text-slate-900 mb-2">조건에 맞는 결과가 없어요</h3>
+                <p className="text-slate-500 max-w-xs mx-auto mb-6">다른 조건으로 검색해보세요.</p>
                 <Button
                   variant="outline"
                   className="text-blue-600 border-blue-100 hover:bg-blue-50"
@@ -139,7 +140,7 @@ export default function App() {
                     setSearchQuery("");
                   }}
                 >
-                  Clear filters & search
+                  조건 & 검색 초기화
                 </Button>
               </div>
             )}
