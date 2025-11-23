@@ -2,7 +2,7 @@
 import type { Racket } from "../data/rackets";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
 import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
+// import { Button } from "./ui/button";
 import { Check } from "lucide-react";
 
 interface RacketDetailProps {
