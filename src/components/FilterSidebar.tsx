@@ -22,36 +22,28 @@ interface FilterSidebarProps {
   className?: string;
 }
 
+
+
 export function FilterSidebar({ filters, setFilters, onClose, className }: FilterSidebarProps) {
-  
-  const toggleBrand = (brand: string) => {
-    const newBrands = filters.brands.includes(brand)
-      ? filters.brands.filter(b => b !== brand)
-      : [...filters.brands, brand];
-    setFilters({ ...filters, brands: newBrands });
-  };
 
-  const toggleWeight = (weight: string) => {
-    const newWeights = filters.weights.includes(weight)
-      ? filters.weights.filter(w => w !== weight)
-      : [...filters.weights, weight];
-    setFilters({ ...filters, weights: newWeights });
-  };
+  //토글 배열 반환 함수
+  function toggleArrayFilter<K extends keyof FilterState>(
+    key: K,
+    value: string,
+  ) {
+    const current = filters[key] as string[];
 
-  const toggleBalance = (balance: string) => {
-    const newBalances = filters.balances.includes(balance)
-      ? filters.balances.filter(b => b !== balance)
-      : [...filters.balances, balance];
-    setFilters({ ...filters, balances: newBalances });
-  };
+    const newArr = current.includes(value)
+      ? current.filter(v => v !== value)
+      : [...current, value];
 
-  const toggleStiffness = (s: string) => {
-    const newStiffness = filters.stiffness.includes(s)
-      ? filters.stiffness.filter(i => i !== s)
-      : [...filters.stiffness, s];
-    setFilters({ ...filters, stiffness: newStiffness });
-  };
+    setFilters({
+      ...filters,
+      [key]: newArr,
+    });
+  }
 
+  //필터 초기화
   const clearFilters = () => {
     setFilters({
       brands: [],
@@ -65,10 +57,10 @@ export function FilterSidebar({ filters, setFilters, onClose, className }: Filte
   return (
     <div className={`bg-white p-6 rounded-xl border border-slate-100 shadow-sm h-fit ${className}`}>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="font-bold text-lg text-slate-900">Filters</h2>
+        <h2 className="font-bold text-lg text-slate-900">검색 조건</h2>
         <div className="flex gap-2">
           <Button variant="ghost" size="sm" onClick={clearFilters} className="text-slate-500 h-8 px-2 text-xs hover:text-blue-600">
-            Reset
+            초기화
           </Button>
           {onClose && (
             <Button variant="ghost" size="icon" onClick={onClose} className="md:hidden h-8 w-8">
@@ -81,13 +73,13 @@ export function FilterSidebar({ filters, setFilters, onClose, className }: Filte
       {/* Price */}
       <div className="mb-6">
         <div className="flex justify-between items-center mb-3">
-          <Label className="text-sm font-semibold text-slate-700">Max Price</Label>
-          <span className="text-sm font-medium text-blue-600">${filters.maxPrice}</span>
+          <Label className="text-sm font-semibold text-slate-700">최대 가격</Label>
+          <span className="text-sm font-medium text-blue-600">{filters.maxPrice.toLocaleString()}원</span>
         </div>
-        <Slider 
-          value={[filters.maxPrice]} 
-          max={300} 
-          step={10} 
+        <Slider
+          value={[filters.maxPrice]}
+          max={500000}
+          step={10}
           onValueChange={(vals) => setFilters({ ...filters, maxPrice: vals[0] })}
           className="py-2"
         />
@@ -97,14 +89,14 @@ export function FilterSidebar({ filters, setFilters, onClose, className }: Filte
 
       {/* Brands */}
       <div className="mb-6">
-        <Label className="text-sm font-semibold text-slate-700 mb-3 block">Brand</Label>
+        <Label className="text-sm font-semibold text-slate-700 mb-3 block">브랜드</Label>
         <div className="space-y-2">
           {BRANDS.map(brand => (
             <div key={brand} className="flex items-center space-x-2">
-              <Checkbox 
-                id={`brand-${brand}`} 
+              <Checkbox
+                id={`brand-${brand}`}
                 checked={filters.brands.includes(brand)}
-                onCheckedChange={() => toggleBrand(brand)}
+                onCheckedChange={() => toggleArrayFilter("brands", brand)}
               />
               <label
                 htmlFor={`brand-${brand}`}
@@ -121,17 +113,16 @@ export function FilterSidebar({ filters, setFilters, onClose, className }: Filte
 
       {/* Weight */}
       <div className="mb-6">
-        <Label className="text-sm font-semibold text-slate-700 mb-3 block">Weight</Label>
+        <Label className="text-sm font-semibold text-slate-700 mb-3 block">무게</Label>
         <div className="flex flex-wrap gap-2">
           {WEIGHTS.map(weight => (
             <button
               key={weight}
-              onClick={() => toggleWeight(weight)}
-              className={`px-3 py-1.5 text-xs rounded-full border transition-all ${
-                filters.weights.includes(weight)
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
-              }`}
+              onClick={() => toggleArrayFilter("weights", weight)}
+              className={`px-3 py-1.5 text-xs rounded-full border transition-all ${filters.weights.includes(weight)
+                ? "bg-blue-600 text-white border-blue-600"
+                : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
+                }`}
             >
               {weight}
             </button>
@@ -141,17 +132,16 @@ export function FilterSidebar({ filters, setFilters, onClose, className }: Filte
 
       {/* Balance */}
       <div className="mb-6">
-        <Label className="text-sm font-semibold text-slate-700 mb-3 block">Balance</Label>
+        <Label className="text-sm font-semibold text-slate-700 mb-3 block">밸런스</Label>
         <div className="flex flex-wrap gap-2">
           {BALANCES.map(bal => (
             <button
               key={bal}
-              onClick={() => toggleBalance(bal)}
-              className={`px-3 py-1.5 text-xs rounded-full border transition-all ${
-                filters.balances.includes(bal)
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
-              }`}
+              onClick={() => toggleArrayFilter("balances", bal)}
+              className={`px-3 py-1.5 text-xs rounded-full border transition-all ${filters.balances.includes(bal)
+                ? "bg-blue-600 text-white border-blue-600"
+                : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
+                }`}
             >
               {bal}
             </button>
@@ -161,17 +151,16 @@ export function FilterSidebar({ filters, setFilters, onClose, className }: Filte
 
       {/* Stiffness */}
       <div className="mb-2">
-        <Label className="text-sm font-semibold text-slate-700 mb-3 block">Stiffness</Label>
+        <Label className="text-sm font-semibold text-slate-700 mb-3 block">샤프트 강성</Label>
         <div className="flex flex-wrap gap-2">
           {STIFFNESS.map(s => (
             <button
               key={s}
-              onClick={() => toggleStiffness(s)}
-              className={`px-3 py-1.5 text-xs rounded-full border transition-all ${
-                filters.stiffness.includes(s)
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
-              }`}
+              onClick={() => toggleArrayFilter("stiffness", s)}
+              className={`px-3 py-1.5 text-xs rounded-full border transition-all ${filters.stiffness.includes(s)
+                ? "bg-blue-600 text-white border-blue-600"
+                : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
+                }`}
             >
               {s}
             </button>

@@ -16,7 +16,7 @@ export default function App() {
   const [sortOption, setSortOption] = useState("featured");
   const [filters, setFilters] = useState<FilterState>({
     brands: [],
-    maxPrice: 300,
+    maxPrice: 250000,
     weights: [],
     balances: [],
     stiffness: []
@@ -60,7 +60,7 @@ export default function App() {
         {/* 메인 타이틀과 검색창 */}
         <div className="max-w-2xl mx-auto mb-12 text-center space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
-            이종혁, 너의 라켓을 <span className="text-blue-600">찾아라</span>
+            거기 너, 인생 <span className="text-blue-600">라켓</span>을 찾아라
           </h1>
 
           {/* 검색박스 */}
@@ -78,12 +78,12 @@ export default function App() {
         {/* 메인 내용 */}
         <div className="flex flex-col md:flex-row gap-8 items-start">
 
-          {/* Sidebar (Desktop) */}
+          {/* 사이드바 (Desktop) */}
           <aside className="hidden md:block w-64 flex-shrink-0 sticky top-24">
             <FilterSidebar filters={filters} setFilters={setFilters} />
           </aside>
 
-          {/* Mobile Filter Trigger */}
+          {/* 모바일 Filter Trigger */}
           <div className="md:hidden w-full mb-4">
             <Sheet>
               <SheetTrigger asChild>
@@ -119,6 +119,7 @@ export default function App() {
               </Select>
             </div>
 
+            {/* 검색 결과 아이템들 */}
             {filteredRackets.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 animate-in fade-in zoom-in-95 duration-500">
                 {filteredRackets.map(racket => (

@@ -18,18 +18,20 @@ export function RacketDetail({ racket, open, onOpenChange }: RacketDetailProps) 
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl p-0 overflow-hidden bg-white gap-0">
         <div className="grid md:grid-cols-2 gap-0">
-          <div className="bg-slate-50 p-8 flex items-center justify-center relative">
+
+          <div className="bg-slate-50 p-4 flex items-center justify-center relative">
             <img
               src={racket.image}
               alt={racket.name}
               className="max-h-[400px] w-auto object-contain mix-blend-multiply"
             />
-            <div className="absolute top-4 left-4">
+            {/* <div className="absolute top-4 left-4">
               <Badge className="bg-white text-slate-900 shadow-sm hover:bg-white border border-slate-100">
                 {racket.series}
               </Badge>
-            </div>
+            </div> */}
           </div>
+
           <div className="p-8 flex flex-col h-full">
             <div className="mb-auto">
               <div className="flex items-center gap-2 mb-2">
@@ -42,26 +44,27 @@ export function RacketDetail({ racket, open, onOpenChange }: RacketDetailProps) 
                 </DialogDescription>
               </DialogHeader>
 
+              {/* 설명 */}
               <p className="text-slate-600 mb-6 leading-relaxed text-sm">
                 {racket.description}
               </p>
 
               <div className="space-y-3 mb-8">
                 <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                  <span className="text-sm text-slate-500">Weight</span>
+                  <span className="text-sm text-slate-500">무게</span>
                   <span className="font-semibold text-slate-900 text-sm">{racket.weight}</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                  <span className="text-sm text-slate-500">Balance</span>
+                  <span className="text-sm text-slate-500">밸런스</span>
                   <span className="font-semibold text-slate-900 text-sm">{racket.balance}</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                  <span className="text-sm text-slate-500">Stiffness</span>
+                  <span className="text-sm text-slate-500">샤프트 강성</span>
                   <span className="font-semibold text-slate-900 text-sm">{racket.stiffness}</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                  <span className="text-sm text-slate-500">Price</span>
-                  <span className="font-bold text-slate-900 text-xl">${racket.price}</span>
+                  <span className="text-sm text-slate-500">가격</span>
+                  <span className="font-bold text-slate-900 text-xl">{racket.price.toLocaleString()}원</span>
                 </div>
               </div>
 
@@ -74,11 +77,12 @@ export function RacketDetail({ racket, open, onOpenChange }: RacketDetailProps) 
               </div>
             </div>
 
-            <div className="flex gap-3 mt-4">
+            {/* <div className="flex gap-3 mt-4">
               <Button className="flex-1 bg-blue-600 hover:bg-blue-700">Add to Compare</Button>
               <Button variant="outline" className="flex-1 border-slate-200 hover:bg-slate-50">Find Retailer</Button>
-            </div>
+            </div> */}
           </div>
+
         </div>
       </DialogContent>
     </Dialog>

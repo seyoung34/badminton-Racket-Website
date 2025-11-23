@@ -22,7 +22,7 @@ export const RACKET_DATA: Racket[] = [
     weight: "4U",
     balance: "Head Heavy",
     stiffness: "Stiff",
-    price: 220,
+    price: 220000,
     image: "https://images.unsplash.com/photo-1716155249759-b5f068f74e63?q=80&w=800&auto=format&fit=crop",
     tags: ["Power", "Smash", "Pro"],
     description: "Designed for power hitters, the Astrox 99 Pro delivers steep smashes and overwhelming control."
@@ -35,7 +35,7 @@ export const RACKET_DATA: Racket[] = [
     weight: "3U",
     balance: "Head Light",
     stiffness: "Stiff",
-    price: 190,
+    price: 190000,
     image: "https://images.unsplash.com/photo-1613918431551-b2ef2720387c?q=80&w=800&auto=format&fit=crop",
     tags: ["Speed", "Control", "Defense"],
     description: "Built for speed, the Nanoflare 800 allows for rapid-fire drives and quick defensive reactions."
@@ -48,7 +48,7 @@ export const RACKET_DATA: Racket[] = [
     weight: "4U",
     balance: "Head Heavy",
     stiffness: "Medium",
-    price: 180,
+    price: 180000,
     image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=800&auto=format&fit=crop",
     tags: ["Offense", "Dragons", "Power"],
     description: "The Ryuga II enhances the swing weight for devastating power while maintaining good handling."
@@ -61,7 +61,7 @@ export const RACKET_DATA: Racket[] = [
     weight: "3U",
     balance: "Balanced",
     stiffness: "Stiff",
-    price: 210,
+    price: 210000,
     image: "https://images.unsplash.com/photo-1613918431551-b2ef2720387c?q=80&w=800&auto=format&fit=crop",
     tags: ["Control", "All-around", "Accuracy"],
     description: "The ultimate control racket. The Arcsaber 11 Pro offers extended shuttle hold time for precise shot-making."
@@ -74,7 +74,7 @@ export const RACKET_DATA: Racket[] = [
     weight: "4U",
     balance: "Balanced",
     stiffness: "Medium",
-    price: 160,
+    price: 160000,
     image: "https://images.unsplash.com/photo-1716155249759-b5f068f74e63?q=80&w=800&auto=format&fit=crop",
     tags: ["Versatile", "Mid-range", "Doubles"],
     description: "A versatile racket suitable for both attacking and defensive playstyles in doubles."
@@ -87,7 +87,7 @@ export const RACKET_DATA: Racket[] = [
     weight: "5U",
     balance: "Head Heavy",
     stiffness: "Flexible",
-    price: 200,
+    price: 200000,
     image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=800&auto=format&fit=crop",
     tags: ["Power", "Elasticity", "Aggressive"],
     description: "Features a unique frame structure that maximizes energy transfer for explosive shots."
@@ -100,7 +100,7 @@ export const RACKET_DATA: Racket[] = [
     weight: "4U",
     balance: "Head Light",
     stiffness: "Stiff",
-    price: 175,
+    price: 175000,
     image: "https://images.unsplash.com/photo-1613918431551-b2ef2720387c?q=80&w=800&auto=format&fit=crop",
     tags: ["Speed", "Fast", "Rally"],
     description: "Designed for the fast-paced flat game, giving you the edge in rapid exchanges."
@@ -113,7 +113,7 @@ export const RACKET_DATA: Racket[] = [
     weight: "5U",
     balance: "Head Heavy",
     stiffness: "Flexible",
-    price: 80,
+    price: 80000,
     image: "https://images.unsplash.com/photo-1716155249759-b5f068f74e63?q=80&w=800&auto=format&fit=crop",
     tags: ["Budget", "Lightweight", "Beginner"],
     description: "An ultra-lightweight racket that punches above its weight class. Great for beginners wanting power."
